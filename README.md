@@ -1,13 +1,4 @@
-Instructions:
-This code test is meant to get an understanding of your data quality pipeline design skills. The
-solution code files and any data output files need to be posted to a public GitHub repository
-owned by you. Please commit directly to the master branch. Commits can be made as often as
-needed.
-System/Tool requirements:
-● Any system with 4GB and above RAM can be used.
-● You can use any data analysis tool to perform this task. Preferably, Python or R. This
-needs to be installed and functioning in your system, in case not already present, before
-you start the code test.
+
 Problem Statement:
 Zomato, an online food-ordering platform, receives data files daily which comprises data
 regarding existing restaurants or new restaurants. The files are location specific. You need to
