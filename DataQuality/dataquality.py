@@ -8,7 +8,6 @@ import glob
 files_processed = ''
 all_data = pd.DataFrame()
 
-
 def file_check(fname, data, dict_cols, files_processed):
     # check if file extension is csv and file is non-empty and if the file is already processed or not
     # and fname.split("/")[1] not in files_processed.split(",")
@@ -43,7 +42,7 @@ def check_correctness(df, bad_rec, df_areas_blore):
     df_bad_rec = df[~df['location'].apply(lambda loc: df_areas_blore['Area'].str.contains(str(loc))).any(axis=1)]
     bad_rec.loc[len(bad_rec.index)] = [df_bad_rec.index.to_list(), 'location mismatch']
 
-    return df_check
+    return df_check,bad_rec
 
 
 def dq_check(df):
