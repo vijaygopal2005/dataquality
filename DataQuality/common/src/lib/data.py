@@ -4,7 +4,7 @@ import os
 import pandas as pd
 
 home = os.path.expanduser("~")
-path = f'{home}/dataquality/DataQuality/input_data'
+path = f'{home}/dataquality/DataQuality/zomato_dq/input_data'
 
 
 def read_files_processed():

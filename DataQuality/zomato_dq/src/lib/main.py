@@ -5,7 +5,8 @@ import pandas as pd
 import os
 
 home = os.path.expanduser("~")
-path = f'{home}/dataquality/DataQuality/output_data'
+inp_path = f'{home}/dataquality/DataQuality/zomato_dq/input_data'
+out_path = f'{home}/dataquality/DataQuality/zomato_dq/output_data'
 
 
 bad_rec = pd.DataFrame(columns=['Row_num_list', 'Type_of_issue'])
@@ -13,6 +14,8 @@ bad_rec = pd.DataFrame(columns=['Row_num_list', 'Type_of_issue'])
 # Read files processed
 files_processed = data.read_files_processed()
 print(files_processed)
+with open(inp_path+"/files_processed.txt", 'w') as f:
+    f.write(files_processed)
 
 # Read Input data
 dict_cols = {'url': str, 'address': str, 'name': str, 'rate': str, 'votes': int, 'phone': str, 'location': str,
@@ -20,6 +23,7 @@ dict_cols = {'url': str, 'address': str, 'name': str, 'rate': str, 'votes': int,
 
 all_data, files_processed = data.read_input_data(dict_cols, files_processed)
 print("Shape of final data", all_data.shape)
+print(all_data['phone'].head())
 
 if ~all_data.empty:
     print("inside if")
@@ -58,8 +62,8 @@ if ~all_data.empty:
     print("printing bad records", bad_rec)
 
     # writing final outputs
-    df.to_csv(path +'/clean_records.out', index=False)
-    bad_rec.to_csv(path+'/bad_records.bad', index=False)
+    df.to_csv(out_path +'/clean_records.out', index=False)
+    bad_rec.to_csv(out_path+'/bad_records.bad', index=False)
 
 
 else:

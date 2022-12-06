@@ -83,16 +83,16 @@ def dq_check(df):
     bad_rec.to_csv('output_data/bad_records.bad', index=False)
 
 
-if os.path.isfile("input_data/files_processed.txt"):
-    with open("input_data/files_processed.txt") as f:
+if os.path.isfile("zomato_dq/input_data/files_processed.txt"):
+    with open("zomato_dq/input_data/files_processed.txt") as f:
         files_processed = f.readline()
 
 dict_cols = {'url': str, 'address': str, 'name': str, 'rate': str, 'votes': int, 'phone': str, 'location': str,
              'rest_type': str, 'dish_liked': object, 'cuisines': str, 'reviews_list': object}
-for filename in glob.glob("input_data/*"):
+for filename in glob.glob("zomato_dq/input_data/*"):
     all_data, files_processed = file_check(filename, all_data, dict_cols, files_processed)
 
-with open("input_data/files_processed.txt", 'w') as f:
+with open("zomato_dq/input_data/files_processed.txt", 'w') as f:
     f.write(files_processed)
 
 if all_data.empty:
